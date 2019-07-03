@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="adapter"
+            type="com.guilhermebisotto.netflix.ui.catalog.CatalogSimpleItemAdapter" />
+
+        <variable
+            name="obj"
+            type="com.guilhermebisotto.netflix.data.catalog.models.CatalogItemModel" />
+    </data>
+
+    <FrameLayout
+        android:layout_width="120dp"
+        android:layout_height="160dp"
+        android:layout_margin="4dp"
+        android:foreground="@drawable/ripple_white"
+        android:onClick="@{(view) -> adapter.onItemClicked(view, obj)}"
+        android:onLongClick="@{(view) -> adapter.onItemLongClicked(view, obj)}">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            app:imageSet="@{obj.image}"
+            tools:src="@tools:sample/avatars" />
+    </FrameLayout>
+</layout>
