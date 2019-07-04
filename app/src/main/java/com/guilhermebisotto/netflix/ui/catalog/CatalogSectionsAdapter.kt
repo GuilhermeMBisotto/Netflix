@@ -23,7 +23,9 @@ class CatalogSectionsAdapter(
             onItemLongClicked(it)
         }
 
-    override fun getLayoutIdForPosition(position: Int): Int = R.layout.item_catalog_sections
+    override fun getLayoutIdForPosition(position: Int): Int =
+        if (position == 0) R.layout.item_catalog_header else R.layout.item_catalog_sections
+
     override fun getItemCount(): Int = items.size
     override fun getObjForPosition(position: Int): Any = items[position]
 

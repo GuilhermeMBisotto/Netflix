@@ -25,4 +25,6 @@ data class CatalogModel(
         CatalogItemModel(),
         CatalogItemModel()
     )
+
+    fun getImageBanner() = "https://i.stack.imgur.com/chfhv.png"
 }

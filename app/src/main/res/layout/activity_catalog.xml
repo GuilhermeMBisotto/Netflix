@@ -11,57 +11,88 @@
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraint_catalogRoot"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/window_bg"
-        tools:context=".ui.catalog.CatalogActivity">
+        android:background="@color/window_bg">
 
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/guideline_catalogBanner"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            app:layout_constraintGuide_percent=".70" />
-
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/guideline_catalogBannerShadow"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            app:layout_constraintGuide_percent=".30" />
-
-        <androidx.appcompat.widget.AppCompatImageView
+        <View
+            android:id="@+id/customStatusBar"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:scaleType="centerCrop"
-            android:src="@drawable/ic_launcher_background"
-            app:layout_constraintBottom_toTopOf="@id/guideline_catalogBanner"
+            android:layout_height="24dp"
+            android:background="@color/translucent_black_50"
+            android:elevation="16dp"
+            android:translationZ="16dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <View
+        <FrameLayout
+            android:id="@+id/customToolbar"
             android:layout_width="match_parent"
-            android:layout_height="100dp"
-            android:background="@drawable/catalog_gradient_banner"
-            app:layout_constraintBottom_toTopOf="@id/guideline_catalogBanner"
+            android:layout_height="60dp"
+            android:background="@color/translucent_black_80"
+            android:elevation="16dp"
+            android:orientation="vertical"
+            android:padding="4dp"
+            android:translationZ="16dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/customStatusBar">
+
+            <View
+                android:layout_width="60dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:background="@color/pin_link_text_light" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:text="@string/lorem"
+                android:textColor="@color/white" />
+        </FrameLayout>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerView_catalog"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:clipToPadding="false"
-            app:anchorTop="@{guidelineCatalogBanner}"
             app:data="@{viewModel.catalog}"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:itemCount="3"
-            tools:listitem="@layout/item_catalog_sections"
-            tools:paddingTop="500dp" />
+            tools:itemCount="4"
+            tools:listitem="@layout/item_catalog_sections" />
+
+        <!--<androidx.coordinatorlayout.widget.CoordinatorLayout-->
+        <!--android:id="@+id/coordinator_catalog"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="0dp"-->
+        <!--app:layout_constraintBottom_toBottomOf="parent"-->
+        <!--app:layout_constraintEnd_toEndOf="parent"-->
+        <!--app:layout_constraintStart_toStartOf="parent"-->
+        <!--app:layout_constraintTop_toBottomOf="@id/customStatusBar">-->
+
+        <!--<com.google.android.material.appbar.AppBarLayout-->
+        <!--android:id="@+id/appbar_catalog"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_gravity="bottom"-->
+        <!--android:elevation="0dp"-->
+        <!--android:translationZ="0dp">-->
+
+        <!--<com.google.android.material.appbar.MaterialToolbar-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="?attr/actionBarSize"-->
+        <!--android:elevation="0dp"-->
+        <!--android:translationZ="0dp"-->
+        <!--app:layout_scrollFlags="scroll|enterAlways" />-->
+        <!--</com.google.android.material.appbar.AppBarLayout>-->
+        <!--</androidx.coordinatorlayout.widget.CoordinatorLayout>-->
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
